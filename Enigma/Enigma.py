@@ -21,6 +21,10 @@ else:
     for i in keyinp:
         key.append(i)
 
+    for i in message:
+        if i not in alpha:
+            message = message.replace(i,"")
+
     for i in range(len(message)):
         converter.append(alpha.index(message[i]))
 
