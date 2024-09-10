@@ -19,7 +19,11 @@ else:
     message = message.upper()
     keyinp = keyinp.upper()
     for i in keyinp:
-        key.append(i)
+        if i in alpha:
+            key.append(i)
+        else:
+            print("Uncorrect key.")
+            exit(0)
 
     for i in message:
         if i not in alpha:
@@ -28,8 +32,9 @@ else:
     for i in range(len(message)):
         converter.append(alpha.index(message[i]))
 
-    ciphertext = ([0]*len(message))
 
+    ciphertext = ([0]*len(message))
+    i = 0
     for l in range(len(alpha)):
         keyl = alpha.index(key[4]) + l
         for k in range(len(alpha)):
@@ -39,15 +44,20 @@ else:
                 for x in range(len(alpha)):
                     keyx = alpha.index(key[1]) + x
                     for y in range(len(alpha)):
-                        if y != len(message):
+
+                        if i != len(message):
+
                             oldkey = (alpha.index(key[0]) + y)
                             keyy = (alpha.index(key[0]) + y + keyx + keyz + keyk + keyl) % len(alpha)
 
-                            ciphertext[y] = alpha.index(message[y]) + keyy
-                            originalMessage += alpha[(converter[y] - oldkey - keyx - keyz - keyk - keyl) % len(alpha)]
+                            ciphertext[i] = alpha.index(message[i]) + keyy
+                            originalMessage += alpha[(converter[i] - oldkey - keyx - keyz - keyk - keyl) % len(alpha)]
+
+                            i += 1
                         else:
                             print("ciphertext:    " + "".join(Transform(ciphertext)))
                             print("mess:    " + originalMessage)
                             exit(0)
+
     print("".join(Transform(ciphertext)))
     print(originalMessage)
