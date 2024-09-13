@@ -4,7 +4,7 @@ def Transform(ciphertext): # Переобразуем числа в буквы.
         ciphertext[i] = alpha[ciphertext[i]]
     return ciphertext
 
-alpha = r"ABCDEFGHIJKLMNOPQRSTUVWXYZ АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!?=-+=@1234567890*/()^%,.:;[]'\""
+alpha = r"ABCDEFGHIJKLMNOPQRSTUVWXYZ АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ!?=-+@1234567890*/()^%,.:;[]'\""
 key = []
 originalMessage = ""
 
@@ -62,4 +62,4 @@ else:
     print("".join(Transform(ciphertext)))
     print(originalMessage)
 
-# В одном сообщении возможно зашифровать не более 6590815232 слов.
+# В одном сообщении возможно зашифровать не более 6240321451 символов.
